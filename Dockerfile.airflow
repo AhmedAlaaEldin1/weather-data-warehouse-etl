@@ -1,0 +1,19 @@
+FROM apache/airflow:2.6.3
+
+# نحتاج صلاحيات root لتثبيت الجافا
+USER root
+
+# تثبيت Java و ps (procps)
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk procps && \
+    apt-get clean
+
+# تعريف متغير JAVA_HOME
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# نرجع نستخدم مستخدم airflow
+USER airflow
+
+# تثبيت موفر Spark لـ Airflow
+RUN pip install --no-cache-dir apache-airflow-providers-apache-spark

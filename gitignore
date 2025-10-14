@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.log
+.env
+postgres_data/
+minio_data/

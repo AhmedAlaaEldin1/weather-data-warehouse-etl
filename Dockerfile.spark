@@ -1,0 +1,20 @@
+FROM apache/spark:3.5.1
+
+# صلاحيات root لتثبيت pip والمكتبات
+USER root
+
+# تحديث النظام وتثبيت pip
+RUN apt-get update && apt-get install -y python3-pip wget
+
+# نسخ ملف requirements.txt
+COPY requirements.txt /tmp/
+
+# تثبيت كل المكتبات
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# 🟢 تحميل درايفر PostgreSQL JDBC
+RUN mkdir -p /opt/spark/jars && \
+    wget -O /opt/spark/jars/postgresql-42.7.3.jar https://jdbc.postgresql.org/download/postgresql-42.7.3.jar
+
+# العودة لمستخدم spark الأصلي
+USER spark
