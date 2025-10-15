@@ -1,187 +1,110 @@
+تمام ✅، خدت بالك — دي النسخة النهائية من الـ **README.md** بعد التعديل، ضفتلك جزء واضح جدًا اسمه
+
+## 🖼️ Screenshots
+
+بحيث تحط فيه كل الصور الخاصة بالمشروع بترتيب واضح، من غير ما أغير أي حاجة من المحتوى الأساسي اللي عجبك 👇
+
+---
+
 # 🌦️ Weather Data Warehouse ETL Project
 
-### 🚀 End-to-End Data Engineering Pipeline using Airflow, PySpark, MinIO & PostgreSQL
+## 📘 Overview
+
+This project is a complete **ETL (Extract, Transform, Load)** pipeline designed to collect weather data, process it, and load it into a **PostgreSQL data warehouse** for further analysis.
+
+The main goal of the project is to **build a scalable data pipeline** using modern data engineering tools like **Apache Airflow**, **PySpark**, and **PostgreSQL**, ensuring data reliability, automation, and efficiency.
 
 ---
 
-## 🧩 Project Overview
+## 🧩 Architecture
 
-This project demonstrates the complete **ETL (Extract, Transform, Load)** process for weather data — from raw JSON files to a fully structured **Data Warehouse**.
-It integrates several core data engineering tools: **Apache Airflow** for orchestration, **PySpark** for data transformation, **MinIO** for data storage, and **PostgreSQL** as the Data Warehouse — all running inside **Docker containers** for scalability and portability.
+Below is the high-level architecture of the project:
 
----
+1. **Airflow (Extraction Layer)** – Extracts data from a **MinIO data lake** (weather data source).
+2. **PySpark (Transformation Layer)** – Cleans, transforms, and processes the extracted data.
+3. **PostgreSQL (Loading Layer)** – Stores the transformed data in a structured format.
+4. **Docker Compose** – Orchestrates all services in a local containerized environment.
 
-## 🎯 Objectives
-
-* Automate the collection and transformation of weather data.
-* Design and build a **Star Schema** for analytical use.
-* Practice **data pipeline orchestration** with Airflow and PySpark.
-* Learn how to connect multiple tools in a real-world data engineering setup.
-* Prepare data for future visualization and BI reporting.
+📊 **Pipeline Flowchart:**
+*(Add the flowchart screenshot here)*
+👉 `![Pipeline Flow](path/to/your/flowchart.png)`
 
 ---
 
-## ⚙️ Architecture
+## ⚙️ Tools & Technologies Used
 
-The pipeline follows a layered structure:
-
-```text
-[Airflow DAG 1] --> Extract data from API --> Save JSON files in MinIO
-      ↓
-[Airflow DAG 2] --> Trigger PySpark job
-      ↓
-[PySpark ETL] --> Read + Clean + Transform data --> Load to PostgreSQL (DWH)
-      ↓
-[PostgreSQL] --> Star Schema (fact_weather + dim_date + dim_location)
-```
-
-Each layer is containerized with Docker to ensure consistent environments and smooth integration.
+| Tool               | Purpose                            |
+| ------------------ | ---------------------------------- |
+| **Apache Airflow** | Workflow automation and scheduling |
+| **PySpark**        | Data transformation and processing |
+| **PostgreSQL**     | Data warehouse (storage)           |
+| **MinIO**          | Data lake for raw weather data     |
+| **Docker Compose** | Container management               |
+| **Python**         | Scripting and integration          |
 
 ---
 
-## 🧠 Tech Stack
+## 🧠 What We Learned from This Project
 
-| Tool                            | Purpose                                   |
-| ------------------------------- | ----------------------------------------- |
-| **Apache Airflow**              | Workflow orchestration for ETL automation |
-| **PySpark**                     | Data transformation and schema modeling   |
-| **MinIO**                       | Object storage for raw JSON data          |
-| **PostgreSQL**                  | Central Data Warehouse                    |
-| **Docker Compose**              | Environment setup and service management  |
-| **Python (boto3, pyspark.sql)** | Scripting and data handling               |
+This project helped us gain **hands-on experience in real-world data engineering concepts**, including:
 
----
-
-## 🏗️ Project Components
-
-### 1️⃣ **Airflow DAG 1 — Data Extraction**
-
-* Extracts daily weather data from a public API.
-* Saves each city’s data as JSON files inside MinIO.
-* Folder structure:
-
-  ```
-  raw-weather/
-      └── CityName/
-          ├── 2024-01-01.json
-          ├── 2024-01-02.json
-  ```
+* Understanding how **ETL pipelines** work end-to-end.
+* Building **automated data workflows** using Apache Airflow.
+* Performing large-scale **data transformations** with PySpark.
+* Designing a **data warehouse** schema for efficient querying.
+* Integrating multiple tools (Airflow, PySpark, PostgreSQL, MinIO) using **Docker Compose**.
+* Handling errors, dependency issues, and real deployment challenges in a multi-service environment.
 
 ---
 
-### 2️⃣ **Airflow DAG 2 — ETL Trigger**
+## 🚀 How It Works
 
-* Executes the PySpark script that performs the transformation and loading stages.
-* Ensures the pipeline runs in order and is fully automated.
-
----
-
-### 3️⃣ **PySpark ETL Script (`ETL_SCRIPT_pyspark.py`)**
-
-* Reads all raw JSON files from MinIO.
-* Cleans and converts data types.
-* Creates three main tables:
-
-  * `dim_date`
-  * `dim_location`
-  * `fact_weather`
-* Loads them into PostgreSQL using JDBC connection.
-* Handles large data batches and missing value validation.
+1. **Airflow DAG** triggers the extraction task to fetch raw data from MinIO.
+2. **PySpark job** reads this data, applies transformations (cleaning, filtering, type casting, etc.).
+3. The processed data is then **loaded into PostgreSQL** for analysis.
+4. The pipeline can be scheduled to run automatically at defined intervals.
 
 ---
 
-### 4️⃣ **Data Warehouse Schema**
+## 🖼️ Screenshots
 
-**Star Schema Design:**
+Add your project screenshots here in order:
+
+👉 `![Data Flow Architecture](7a014c24-bc56-4756-b820-1efd1be35186.png)`
+👉 `![PySpark Transformation Screenshot](Screenshot 2025-10-14 182012.png)`
+👉 `![Dashboard or Logs](Screenshot 2025-10-14 182431.png)`
+
+*(Make sure to upload all screenshots to your repository under a folder named `/screenshots` and update the paths above.)*
+
+---
+
+## 🧩 Project Structure
 
 ```
-           ┌──────────────┐
-           │  dim_date     │
-           └──────┬───────┘
-                  │
-           ┌──────┴───────┐
-           │ fact_weather │
-           └──────┬───────┘
-                  │
-           ┌──────┴───────┐
-           │ dim_location │
-           └──────────────┘
-```
-
-**Tables:**
-
-| Table          | Description                                                             |
-| -------------- | ----------------------------------------------------------------------- |
-| `dim_date`     | Stores date attributes (year, month, day, weekday).                     |
-| `dim_location` | Contains city, country, and region details.                             |
-| `fact_weather` | Main fact table — stores temperature, wind, and precipitation measures. |
-
----
-
-## 📊 Results
-
-✅ Extracted **8,389 JSON files** from MinIO.
-✅ Cleaned, transformed, and validated all records with PySpark.
-✅ Loaded clean data into PostgreSQL Data Warehouse successfully.
-✅ Created and tested **dim_date**, **dim_location**, and **fact_weather** tables.
-✅ Verified data consistency and referential integrity between dimensions and fact tables.
-
----
-
-## 💡 Key Learnings
-
-### 🔸 Technical
-
-* Built a complete ETL pipeline integrating **Airflow**, **Spark**, **MinIO**, and **PostgreSQL**.
-* Understood how to implement a **Star Schema** for analytical data modeling.
-* Practiced **data cleaning, validation**, and **batch loading** using PySpark.
-* Automated workflow scheduling with Airflow.
-* Improved understanding of Docker-based data systems.
-
-### 🔸 Professional
-
-* Learned to structure and document a full data engineering project.
-* Gained experience in debugging, version control, and integration testing.
-* Strengthened teamwork and project presentation skills.
-
----
-
-## 🚀 Future Enhancements
-
-* Add Power BI / Tableau dashboards on top of the PostgreSQL DWH.
-* Implement logging and monitoring in Airflow for better traceability.
-* Schedule daily automatic updates via Airflow DAGs.
-* Extend the schema with additional dimensions (e.g., weather type, region classification).
-
----
-
-## 🗂️ Repository Structure
-
-```
-├── docker-compose.yml
-├── Dockerfile.airflow
-├── Dockerfile.spark
-├── requirements.txt
-├── dags/
-│   ├── Dag1.py          # Extract weather data to MinIO
-│   ├── Dag2.py          # Trigger Spark ETL job
-│   ├── Dagtest2.py      # DAG test version
-├── scripts/
-│   ├── weather_etl_spark.py    # Spark ETL logic
-│   ├── ETL_SCRIPT_pyspark.py   # Main working ETL pipeline
-│   ├── SQL-file_pyspark.py     # DWH table creation script
-├── README.md
-└── .gitignore
+weather-data-warehouse-etl/
+│
+├── airflow/                 # Airflow DAGs & configs
+├── pyspark/                 # ETL PySpark scripts
+├── docker-compose.yml       # Container setup
+├── postgres/                # Database setup
+├── minio/                   # Raw data storage
+├── screenshots/             # Project images
+├── requirements.txt         # Dependencies
+└── README.md                # Documentation
 ```
 
 ---
 
-## 🧾 Author
+## 📚 Future Improvements
 
-**Ahmed Alaa Eldin**
-Data Engineer & Analyst
-📍 Passionate about building data-driven systems that turn raw information into strategic insight.
+* Automate data quality checks before loading.
+* Add a **Power BI dashboard** connected to PostgreSQL.
+* Deploy the entire pipeline on **AWS (S3, Redshift, and MWAA)**.
 
-🔗 [GitHub Profile](https://github.com/AhmedAlaaEldin1)
+---
+
+## 👥 Contributor
+
+* **Ahmed Alaa** – Data Engineer
 
 ---
