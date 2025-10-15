@@ -64,7 +64,7 @@ This project helped us gain **hands-on experience in real-world data engineering
 
 Add your project screenshots here in order:
 
-👉 `![Data Flow Architecture](7a014c24-bc56-4756-b820-1efd1be35186.png)`
+👉 `![7a014c24-bc56-4756-b820-1efd1be35186.png](7a014c24-bc56-4756-b820-1efd1be35186.png)`
 👉 `![PySpark Transformation Screenshot](Screenshot 2025-10-14 182012.png)`
 👉 `![Dashboard or Logs](Screenshot 2025-10-14 182431.png)`
 
