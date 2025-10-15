@@ -1,5 +1,3 @@
----
-
 # 🌦️ Weather Data Warehouse ETL Project
 
 ## 📘 Overview
@@ -58,19 +56,23 @@ This project helped us gain **hands-on experience in real-world data engineering
 
 ## 🖼️ Screenshots
 
-Add your project screenshots here in order:
+Below are screenshots showing key components of the project execution:
 
-👉 `!([7a014c24-bc56-4756-b820-1efd1be35186.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/7a014c24-bc56-4756-b820-1efd1be35186.png))`
-👉 `!([Screenshot 2025-10-14 182012.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182012.png))`
-👉 `!([Screenshot 2025-10-14 182431.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182431.png))`
+### 🌀 Airflow DAG
+![Airflow DAG Screenshot](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/7a014c24-bc56-4756-b820-1efd1be35186.png)
 
-*(Make sure to upload all screenshots to your repository under a folder named `/screenshots` and update the paths above.)*
+### ⚙️ ETL Execution in Jupyter (PySpark)
+![PySpark ETL Screenshot](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182012.png)
+
+### 🗄️ PostgreSQL Tables
+![PostgreSQL Tables Screenshot](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182431.png)
 
 ---
 
 ## 🧩 Project Structure
 
 ```
+
 weather-data-warehouse-etl/
 │
 ├── airflow/                 # Airflow DAGs & configs
@@ -81,6 +83,7 @@ weather-data-warehouse-etl/
 ├── screenshots/             # Project images
 ├── requirements.txt         # Dependencies
 └── README.md                # Documentation
+
 ```
 
 ---
