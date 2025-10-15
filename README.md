@@ -19,10 +19,6 @@ Below is the high-level architecture of the project:
 3. **PostgreSQL (Loading Layer)** – Stores the transformed data in a structured format.
 4. **Docker Compose** – Orchestrates all services in a local containerized environment.
 
-📊 **Pipeline Flowchart:**
-*(Add the flowchart screenshot here)*
-👉 `![Pipeline Flow](path/to/your/flowchart.png)`
-
 ---
 
 ## ⚙️ Tools & Technologies Used
@@ -64,9 +60,9 @@ This project helped us gain **hands-on experience in real-world data engineering
 
 Add your project screenshots here in order:
 
-👉 `![7a014c24-bc56-4756-b820-1efd1be35186.png](7a014c24-bc56-4756-b820-1efd1be35186.png)`
-👉 `![PySpark Transformation Screenshot](Screenshot 2025-10-14 182012.png)`
-👉 `![Dashboard or Logs](Screenshot 2025-10-14 182431.png)`
+👉 `!([7a014c24-bc56-4756-b820-1efd1be35186.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/7a014c24-bc56-4756-b820-1efd1be35186.png))`
+👉 `!([Screenshot 2025-10-14 182012.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182012.png))`
+👉 `!([Screenshot 2025-10-14 182431.png](https://github.com/AhmedAlaaEldin1/weather-data-warehouse-etl/blob/main/Screenshot%202025-10-14%20182431.png))`
 
 *(Make sure to upload all screenshots to your repository under a folder named `/screenshots` and update the paths above.)*
 
